@@ -10,7 +10,8 @@ export class Countdown extends HTMLElement {
     }
     set count(newCount: number) {
         this._count = newCount;
-        // TODO 1
+        // 1
+        this.update();
     }
 
     private _state: CountdownState = 'idle';
@@ -23,7 +24,8 @@ export class Countdown extends HTMLElement {
     private set state(newState: CountdownState) {
         this._state = newState;
         this.triggerState();
-        // TODO 1
+        // 1
+        this.update();
     }
 
     constructor() {
@@ -31,7 +33,9 @@ export class Countdown extends HTMLElement {
     }
 
     triggerState() {
-        // TODO 7
+        // 7
+        const event = new CustomEvent('state', { detail: this.state });
+        this.dispatchEvent(event);
     }
 
     connectedCallback() {
@@ -55,16 +59,19 @@ export class Countdown extends HTMLElement {
 
     start = () => {
         console.log('Start');
-        // TODO 4
+        // 4
+        this.state = 'run'
 
         setTimeout(() => {
-            // TODO 4
+            // 4
+            this.state = 'done';
         }, 1000 * this.count);
     };
 
     reset = () => {
         console.log('Reset');
-        // TODO 6
+        // 6
+        this.state = 'idle';
     };
 
     updateCount = (event: Event) => {
@@ -80,18 +87,18 @@ export class Countdown extends HTMLElement {
                 <header>Countdown</header>
                 <label>
                     in seconds
-                    <!-- TODO 2 -->
-                    <input type="number" min="1" max="10" value=${count} >
+                    <!-- 2 -->
+                    <input type="number" min="1" max="10" value=${count} @change=${updateCount}>
                 </label>
-                <!-- TODO 3 -->
-                <button>Start</button>
+                <!-- 3 -->
+                <button @click=${start}>Start</button>
             </div>
             <div class="run">
                 <header>Running</header>
             </div>
             <div class="done">
                 <header>Done</header>
-                <!-- TODO 5 -->
+                <!-- 5 -->
                 <button @click=${reset}>Reset</button>
             </div>
         </div>`;
