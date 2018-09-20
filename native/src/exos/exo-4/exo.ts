@@ -27,12 +27,33 @@ class Checkerboard2 extends HTMLElement {
     }
 
     connectedCallback() {
-        // TODO 1
+        // 1
+        this.update()
     }
 
-    // TODO 2
+    // 2
+    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+        switch(name) {
+            case 'size':
+                this.size = +newValue;
+                this.update();
+                break;
+            case 'dark':
+                this.dark = newValue;
+                this.update();
+                break;
+            case 'light':
+                this.light = newValue;
+                this.update();
+                break;
+            default:
+                console.warn('Unhandled attribute:', name);
+        }
+    }
 
-    // TODO 3
+    // 3
+    static get observedAttributes() {return ['size', 'dark', 'light']; }
+
 
     update() {
         render(this.template(), this);
