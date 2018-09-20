@@ -1,0 +1,45 @@
+details {
+    background: var(--fg);
+    color: var(--bg);
+    margin: .5em 0;
+    padding: 0 .25em;
+    /* box-shadow: .125em .125em .25em hsla(0, 100%, 100%, .25); */
+}
+
+summary {
+    background: ghostwhite;
+    display: flex;
+    align-items: center;
+    outline-width: thin;
+    cursor: pointer;
+}
+
+summary h2 {
+    display: block;
+    align-items: center;
+    margin: .5em 0;
+}
+
+.num {
+    font-family: monaco, monospace;
+}
+.num::before {
+    content: '[';
+}
+
+.num::after {
+    content: ']';
+    margin-right: .5em;
+}
+
+.name {
+    flex-grow: 1;
+}
+
+.type {
+    color: #fff;
+    background-color: #6c757d;
+    font-size: 75%;
+    padding: .25em;
+    border-radius: .25em;
+}

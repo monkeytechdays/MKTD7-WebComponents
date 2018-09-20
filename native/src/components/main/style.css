@@ -1,0 +1,48 @@
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: .5rem;
+    padding: .25rem;
+    padding-left: 0;
+}
+
+.next,
+.start, .finish {
+    margin: .5em;
+    padding: .5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    background: forestgreen;
+    border-radius: .25em;
+    border: thin solid transparent;
+    transition: all .4s;
+}
+.finish {
+    font-size: 2em;
+}
+
+.finish::before, .finish::after {
+    margin: .125em .5em; 
+}
+.finish::before {
+    content: '👏';
+}
+.finish::after {
+    content: '🎉';
+}
+
+.next:hover,
+.start:hover {
+    border: thin solid hsla(0, 100%, 100%, .5);
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .1));
+}
+
+.next::before,
+.start::before {
+    content: '▶️';
+    margin-right: .5em;
+}
