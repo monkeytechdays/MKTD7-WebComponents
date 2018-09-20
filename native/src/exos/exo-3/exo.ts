@@ -9,8 +9,8 @@ interface Cell {
 class Checkerboard extends HTMLElement {
 
     get size(): number {
-        // TODO Step 1
-        return 1;
+        // Step 1
+        return +this.getAttribute('size');
     }
 
     get cells(): Cell[] {
