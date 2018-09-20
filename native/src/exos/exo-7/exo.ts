@@ -7,13 +7,16 @@ export class StickyNote extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        // TODO 2
+        // 2
+        this.stickyNotesTemplate = document.querySelector('#sticky-note-template') as HTMLTemplateElement;
     }
 
     connectedCallback() {
         window.ShadyCSS && window.ShadyCSS.styleElement(this);
         
-        // TODO 3
+        // 3
+        const cloned = this.stickyNotesTemplate.content.cloneNode(true)
+        this.shadowRoot.appendChild(cloned);
     }
 
 }
@@ -25,7 +28,11 @@ export default function () {
 
     // Create template
     const templateElt = document.createElement('template');
-    // TODO 1
+    // 1
+    templateElt.id = 'sticky-note-template';
+    templateElt.innerHTML = `
+        <style>${style}</style>
+        ${htmlTemplate}`;
     document.body.appendChild(templateElt);
 
     // If we need a polyfill for ShadowDom and CSS
@@ -38,6 +45,7 @@ export default function () {
     const playground = document.querySelector('.playground');
     playground.innerHTML = `
     <sticky-note>
-        <!-- TODO 4 -->
+        <!-- 4 -->
+        <span slot="content">Plop!</span>
     </sticky-note>`;
 }
